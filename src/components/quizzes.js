@@ -21,7 +21,13 @@ class Quizzes {
       console.log('rendering!')
       // needs to append to main
       const main = document.querySelector('main')
-      // const quizMenu = document.getElementById('trivia-container')
-      // quizMenu.innerHTML - "testing the div"
+      // create the trivia container - div
+      const quizMenu = document.createElement('div')
+      quizMenu.id = 'quiz-container'
+      // example out to see if working
+      quizMenu.innerText = "testing the div"
+
+      // append the quizMenu to the main
+      main.appendChild(quizMenu)
    }
 }
