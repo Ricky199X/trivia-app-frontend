@@ -10,9 +10,14 @@ class Quizzes {
       this.adapter
          .getQuizzes()
          .then(quizObjects => {
-            console.log(quizObjects)
+            console.log(typeof quizObjects)
             // quizObject is returning undefined - can't use forEach 
-            quizObjects.forEach(quizObject => this.quizzes.push(quiz))
+            // quizObjects.forEach(quizObject => this.quizzes.push(quizObject))
+
+            for(const quizObject in quizObjects) {
+               console.log(quizObject)  // this is console logging 'data' for some reason
+               this.quizzes.push(quizObject)
+         }
       })
       .then(() => {
          this.render()
@@ -22,7 +27,6 @@ class Quizzes {
    // render quizzes to the DOM - call after we get all the quizzes
 
    render() {
-      console.log('rendering!')
       // needs to append to main
       const main = document.querySelector('main')
       // create the trivia container - div
