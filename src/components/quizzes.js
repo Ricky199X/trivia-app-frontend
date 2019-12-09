@@ -7,8 +7,12 @@ class Quizzes {
    }
 
    fetchAndLoadQuizzes() {
-      this.adapter.getQuizzes().then(quizzes => {
-         return quizzes
+      this.adapter
+         .getQuizzes()
+         .then(quizObjects => {
+            console.log(quizObjects)
+            // quizObject is returning undefined - can't use forEach 
+            quizObjects.forEach(quizObject => this.quizzes.push(quiz))
       })
       .then(() => {
          this.render()
@@ -29,5 +33,6 @@ class Quizzes {
 
       // append the quizMenu to the main
       main.appendChild(quizMenu)
+      console.log('my notes are', this.notes)
    }
 }
