@@ -16,7 +16,9 @@ class Quizzes {
          })
          // now we can forEach over the quiz data and push them into this.quizzes up top
          .then(quizInfo => {
-            quizInfo.forEach(quiz => this.quizzes.push(quiz))
+            // iterate over each element of the quiz info node list, pass a new instance of a quiz object into this.quizzes
+            // this line returning error -> Quiz class is not defined currently
+            quizInfo.forEach(quizJSON => this.quizzes.push(new Quiz(quizJSON)))
          })
       .then(() => {
          this.render()
