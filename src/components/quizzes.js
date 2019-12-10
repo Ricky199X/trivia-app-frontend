@@ -33,9 +33,8 @@ class Quizzes {
       quizMenu.id = 'quiz-container'
       // example out to see if working
       quizMenu.innerText = "testing the div"
-
       // append the quizMenu to the main
       main.appendChild(quizMenu)
-      console.log('my notes are', this.quizzes)
+      console.log(this.quizzes)
    }
 }
