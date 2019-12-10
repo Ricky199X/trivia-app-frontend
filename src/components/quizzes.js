@@ -8,17 +8,16 @@ class Quizzes {
 
    fetchAndLoadQuizzes() {
       this.adapter
-         .getQuizzes()
-         .then(quizObjects => {
-            console.log(typeof quizObjects)
-            // quizObject is returning undefined - can't use forEach 
-            // quizObjects.forEach(quizObject => this.quizzes.push(quizObject))
-
-            for(const quizObject in quizObjects) {
-               console.log(quizObject)  // this is console logging 'data' for some reason
-               this.quizzes.push(quizObject)
-         }
-      })
+      .getQuizzes()
+         .then(function(quizObjects) {
+            // had to access the data itself, could not iterate over just the quiz objects alone
+            const quizInfo = quizObjects.data
+            return quizInfo
+         })
+         // now we can forEach over the quiz data and push them into this.quizzes up top
+         .then(quizInfo => {
+            quizInfo.forEach(quiz => this.quizzes.push(quiz))
+         })
       .then(() => {
          this.render()
       })
@@ -37,6 +36,6 @@ class Quizzes {
 
       // append the quizMenu to the main
       main.appendChild(quizMenu)
-      console.log('my notes are', this.notes)
+      console.log('my notes are', this.quizzes)
    }
 }
