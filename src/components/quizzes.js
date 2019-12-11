@@ -45,7 +45,7 @@ class Quizzes {
       // we'll want to append html to the div in order to add the quiz objects to the container
       // we map through the quiz objects and sets the titles to li's.
       // must be a string because we're trying to dynamically create HTML
-      quizMenu.innerHTML = this.quizzes.map(quiz => `<li>${quiz.title}</li>`).join('')
+      quizMenu.innerHTML = this.quizzes.map(quiz => quiz.renderLi()).join('')
       // append the quizMenu to the main
       this.main.appendChild(quizMenu)
    }

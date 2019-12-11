@@ -5,4 +5,8 @@ class Quiz {
       this.description = quizJSON.attributes.description
       this.category = quizJSON.attributes.category.name
    }
+
+   renderLi() {
+      return `<li>${this.title}</li>`
+   }
 }
