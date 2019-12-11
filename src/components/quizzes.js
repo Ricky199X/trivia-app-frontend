@@ -25,7 +25,6 @@ class Quizzes {
                // DO I NEED TO USER ARROW FUNCTION HERE?
                return new Quiz(quizObj)
             })
-            // console.log(this.quizzes)
          })
       .then(() => {
          this.render()
@@ -33,15 +32,18 @@ class Quizzes {
    }
 
    // render quizzes to the DOM - call after we get all the quizzes
-
    render() {
       // needs to append to main
       const main = document.querySelector('main')
       // create the trivia container - div
-      const quizMenu = document.createElement('div')
+      const quizMenu = document.createElement('ul')
       quizMenu.id = 'quiz-container'
-      // example out to see if working
-      quizMenu.innerText = "testing the div"
+
+      // we'll want to append html to the div in order to add the quiz objects to the container
+      quizMenu.innerHTML = `
+         <li>Quiz 1</li>
+         <li>Quiz 2</li>
+      `
       // append the quizMenu to the main
       main.appendChild(quizMenu)
       console.log(this.quizzes)
