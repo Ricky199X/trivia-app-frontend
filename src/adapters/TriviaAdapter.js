@@ -4,7 +4,7 @@ class TriviaAdapter {
    }
 
    getQuizzes() {
-      return fetch("http://localhost:3000/quizzes").then(response => {
+      return fetch(this.baseUrl).then(response => {
          // console.log(response);
          return response.json();
        }).then(data => {
