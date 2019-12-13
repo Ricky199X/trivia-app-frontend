@@ -19,15 +19,11 @@ class Quizzes {
             const quizInfo = quizObjects.data
             return quizInfo
          })
-         // now we can forEach over the quiz data and push them into this.quizzes
+         // now we can map over the quiz data and push them into this.quizzes
          .then(quizInfo => {
             // iterate over each element of the quiz info node list, pass a new instance of a quiz object into this.quizzes
-            console.log(quizInfo)
+            // console.log(quizInfo)
             this.quizzes = quizInfo.map(function(quizObj) {
-               // this line returning error -> Quiz class is not defined currently
-               // trying to instantiate new quiz objects and set them in this.quizzes
-               // MIGHT NEED TO BIND .this HERE, CHECK WITH MICAH
-               // DO I NEED TO USER ARROW FUNCTION HERE?
                return new Quiz(quizObj)
             })
          })

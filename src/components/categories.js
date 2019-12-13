@@ -14,10 +14,16 @@ class Categories {
    fetchAndLoadCategories() {
       this.adapter
       .getCategories()
-      .then(function(categoryObjects) {
-         const categoryInfo = categoryObjects
+      .then(function(categoryJSON) {
+         const categoryInfo = categoryJSON.data
          console.log(categoryInfo)
+         return categoryInfo
       })
+      .then(categoryInfo => {
+         this.categories = categoryInfo.map(function(categoryObject) {
+            return new Category(categoryObject)
+         })
+      }) 
 
 
 
