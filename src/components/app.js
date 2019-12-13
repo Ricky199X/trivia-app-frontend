@@ -1,6 +1,6 @@
 class App {
    constructor() {
-      this.category = new Categories()
+      this.categories = new Categories()
       this.quizzes = new Quizzes()
 
    }

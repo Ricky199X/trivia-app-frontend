@@ -6,7 +6,7 @@ class TriviaAdapter {
 
    // function to get categories
    getCategories() {
-      fetch(categoryUrl).then(resp => {
+      fetch(this.categoryUrl).then(resp => {
          return resp.json()
       }).then(data => {
          return data
