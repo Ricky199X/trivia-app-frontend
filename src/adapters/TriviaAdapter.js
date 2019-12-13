@@ -3,6 +3,8 @@ class TriviaAdapter {
       this.baseUrl = "http://localhost:3000/quizzes"
    }
 
+   // function to get categories
+
    getQuizzes() {
       return fetch(this.baseUrl).then(response => {
          // console.log(response);
