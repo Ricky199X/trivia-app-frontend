@@ -12,7 +12,8 @@ class Quiz {
 
    // function to renders a quiz's questions
    renderQuestions() {
-      return `<li>${this.questions}</li>`
-      // console.log(this.questions)
+      for(let i = 0; i < this.questions.length; i++) {
+         return `<li> ${i + 1}. ${this.questions[i].prompt}</li>`
+      }
    }
 }

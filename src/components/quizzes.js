@@ -62,8 +62,13 @@ class Quizzes {
       const questionDiv = document.createElement('div')
       questionDiv.id = 'question-div'
 
-      questionDiv.innerHTML = this.quizzes.map(quiz => quiz.renderQuestions()).join('')
+       // creates a list for the questions 
+       const questionList = document.createElement('ul')
+       questionList.id = 'question-list'
 
+      questionList.innerHTML = this.quizzes.map(quiz => quiz.renderQuestions()).join('')
+
+      questionDiv.appendChild(questionList)
       this.main.appendChild(questionDiv)
       
    }
