@@ -8,7 +8,7 @@ class Categories {
 
    // initBindingAndEventListeners() {
    //    this.main = document.querySelector('main')
-   //    this.categoryMenu = document.getElementById
+   //    // this.categoryMenu = document.getElementById('category-container')
    // }
    
    fetchAndLoadCategories() {
@@ -32,15 +32,24 @@ class Categories {
    }
    renderCategories() {
       // create the category container - div
+      const main = document.querySelector('main')
+
+      // creates a div for the category names
       const categoryDiv = document.createElement('div')
       categoryDiv.id = 'category-div'
+
+      // creates a list for the category types
       const categoryMenu = document.createElement('ul')
-      categoryMenu.id = 'category-container'
+      categoryMenu.id = 'category-menu'
 
-      categoryMenu.innerHTML = this.categories.map(category => category.renderLi()).join('')
+      // is SUPPOSED to map through the different category names and render to the category menu 
+      categoryMenu.innerHTML = this.categories.map(category => category.renderCategoryLi()).join('')
 
-      categoryMenu.append(categoryDiv)
-      this.main.appendChild(categoryDiv)
+      // appends the category menu to the category div
+      categoryDiv.appendChild(categoryMenu)
+
+      // appends the div, to main 
+      main.appendChild(categoryDiv)
    }
 
 }

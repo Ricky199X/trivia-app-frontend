@@ -5,7 +5,7 @@ class Category {
       this.description = categoryJSON.attributes.description
    }
 
-   renderLi() {
+   renderCategoryLi() {
       return `<li>${this.name}</li>`
    }
 }
