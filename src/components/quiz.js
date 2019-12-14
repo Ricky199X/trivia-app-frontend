@@ -16,4 +16,6 @@ class Quiz {
          return `<li> ${i + 1}. ${this.questions[i].prompt}</li>`
       }
    }
+
+   
 }
