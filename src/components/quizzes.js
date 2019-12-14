@@ -29,6 +29,7 @@ class Quizzes {
          })
       .then(() => {
          this.render()
+         this.renderQuizQuestions()
       })
    }
 
@@ -47,7 +48,23 @@ class Quizzes {
       // we map through the quiz objects and sets the titles to li's.
       // must be a string because we're trying to dynamically create HTML
       quizMenu.innerHTML = this.quizzes.map(quiz => quiz.renderLi()).join('')
+
+      quizDiv.appendChild(quizMenu)
+
       // append the quizMenu to the main
-      this.main.appendChild(quizMenu)
+      this.main.appendChild(quizDiv)
+      console.log(this.quizzes)
+   }
+
+   renderQuizQuestions() {
+      // create the question container - div
+
+      const questionDiv = document.createElement('div')
+      questionDiv.id = 'question-div'
+
+      questionDiv.innerHTML = this.quizzes.map(quiz => quiz.renderQuestions()).join('')
+
+      this.main.appendChild(questionDiv)
+      
    }
 }
