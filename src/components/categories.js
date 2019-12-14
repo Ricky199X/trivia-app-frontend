@@ -30,9 +30,6 @@ class Categories {
       })
    }
    renderCategories() {
-      // create the category container - div
-      const main = document.querySelector('main')
-
       // creates a div for the category names
       const categoryDiv = document.createElement('div')
       categoryDiv.id = 'category-div'

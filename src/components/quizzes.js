@@ -35,8 +35,13 @@ class Quizzes {
    // render quizzes to the DOM - call after we get all the quizzes
    render() {
       // create the trivia container - div
+
+      const quizDiv = document.createElement('div')
+      quizDiv.id = 'quiz-div'
+
+      // creates a list for the quiz names
       const quizMenu = document.createElement('ul')
-      quizMenu.id = 'quiz-container'
+      quizMenu.id = 'quiz-menu'
 
       // we'll want to append html to the div in order to add the quiz objects to the container
       // we map through the quiz objects and sets the titles to li's.
