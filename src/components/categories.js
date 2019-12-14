@@ -2,14 +2,13 @@ class Categories {
    constructor() {
       this.categories = []
       this.adapter = new TriviaAdapter()
-      // this.initBindingAndEventListeners()
+      this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
    }
 
-   // initBindingAndEventListeners() {
-   //    this.main = document.querySelector('main')
-   //    // this.categoryMenu = document.getElementById('category-container')
-   // }
+   initBindingAndEventListeners() {
+      this.main = document.querySelector('main')
+   }
    
    fetchAndLoadCategories() {
       this.adapter
@@ -49,7 +48,7 @@ class Categories {
       categoryDiv.appendChild(categoryMenu)
 
       // appends the div, to main 
-      main.appendChild(categoryDiv)
+      this.main.appendChild(categoryDiv)
    }
 
 }
