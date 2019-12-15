@@ -1,28 +1,66 @@
 body {
    margin: 0;
    padding: 0;
- }
-
- h1 {
-  color: blue;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  }
-
- h2 {
-   color: rgb(185, 58, 58);
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
  }
- 
+
+ #container{
+   width:60%;
+   background: rgb(123, 182, 123);
+   margin:20px auto;
+   overflow:auto;
+   padding:25px;
+ }
+
  header {
-   background-color: #9ca2d8;
-   margin: 0 auto;
-   height: 50px;
+  text-align:center;
+  border-bottom: rgb(250, 250, 250) dashed 3px;
+  background-color: #db6845;
+  /* margin: 0 auto;
+  height: 50px; */
+}
+
+section {
+  min-height:500px;
+}
+
+input[type="submit"]{
+  background-color: whitesmoke;
+  padding:10px 15px;
+  cursor: pointer;
+}
+
+header h1 {
+  color: whitesmoke;
+  padding: 0px;
+  margin: 0;
+}
+
+header p {
+  padding: 0;
+  margin-top: 5px;
+}
+
+ h2 {
+   color: whitesmoke;
+   
  }
- 
- header h2 {
-   padding: 10px;
-   margin: 0;
- }
+
+ h3 {
+  color: whitesmoke;
+}
+
+#results h3 {
+  background:#f06226;
+  padding:10px;
+  margin:10px;
+}
+
+#results span{
+  color: #000;
+  font-weight: bold;
+}
+
  
  main {
    display: grid;
@@ -44,7 +82,7 @@ body {
  
  p {
    font-size: 1.5em;
-   color: black;
+   color: whitesmoke;
    font-family: Helvetica;
  }
  
