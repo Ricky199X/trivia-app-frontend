@@ -8,7 +8,7 @@ class Quizzes {
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
-      this.quizMenu = document.getElementById('quiz-container')
+      // this.quizMenu = document.getElementById('quiz-container')
    }
 
    fetchAndLoadQuizzes() {
@@ -29,7 +29,7 @@ class Quizzes {
          })
       .then(() => {
          this.render()
-         this.renderQuizQuestions()
+         // this.renderQuizQuestions()
       })
    }
 
@@ -55,6 +55,8 @@ class Quizzes {
       this.main.appendChild(quizDiv)
       console.log(this.quizzes)
    }
+
+   
 
    renderQuizQuestions() {
       // create the question container - div

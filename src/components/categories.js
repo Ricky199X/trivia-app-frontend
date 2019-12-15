@@ -33,6 +33,7 @@ class Categories {
       // creates a div for the category names
       const categoryDiv = document.createElement('div')
       categoryDiv.id = 'category-div'
+      categoryDiv.innerText = "Please select a category below!"
 
       // creates a list for the category types
       const categoryMenu = document.createElement('ul')
