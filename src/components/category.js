@@ -9,8 +9,7 @@ class Category {
       return `<li>${this.name}</li>`
    }
 
-   renderCategoryQuizzes(categoryName) {
-      
-
+   renderCategoryQuizzes() {
+      return `<li>${categoryName.quizzes}</li>`
    }
 }

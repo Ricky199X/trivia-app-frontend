@@ -9,7 +9,6 @@ class Categories {
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
-      // this.categoryLiList = document.querySelectorAll('li')
    }
    
    fetchAndLoadCategories() {
@@ -17,22 +16,21 @@ class Categories {
       .getCategories()
       .then(function(categoryJSON) {
          const categoryInfo = categoryJSON.data
-         // console.log(categoryInfo)
          return categoryInfo
       })
       .then(categoryInfo => {
-         // console.log(categoryInfo)
          this.categories = categoryInfo.map(function(categoryObject) {
-            // console.log(categoryObject)
             return new Category(categoryObject)
          })
       }) 
       .then(() => {
          this.renderCategories()
          this.selectCategory()
+         // this.renderCategoryQuizzes()
       })
    }
-   renderCategories() {
+   renderCategories() { // strictly meant to render the names of the categories to the browser
+
       // creates a div for the category names
       const categoryDiv = document.createElement('div')
       categoryDiv.id = 'category-div'
@@ -55,8 +53,6 @@ class Categories {
  
    // at this point, when you click a category name, I want something to happen 
    // ideal outcome: click the category name -> then render the quizzes of that specific category 
-
-   // idea is to add click event to each category li
    selectCategory() {
       const categoryLiList = document.querySelectorAll('li')
 
@@ -70,8 +66,11 @@ class Categories {
             // need to construct renderCategoryQuizzes function within the category class
             let categoryName = event.currentTarget.innerHTML
             console.log(categoryName)
+            return categoryName
          })
       }
+      // then we call renderCategoryQuizzes
+      categoryName.renderCategoryQuizzes()
    }
 
 
