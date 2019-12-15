@@ -9,21 +9,24 @@ class TriviaAdapter {
       return fetch(this.categoryUrl).then(resp => {
          return resp.json()
       }).then(data => {
+         // console.log(data)
          return data
       }).catch(err => {
          alert(err)
       })
    }
 
-   getCategoryQuizzes() {
-      return fetch(this.categoryUrl).then(resp => {
-         return resp.json()
-      }).then(data => {
-         return data
-      }).catch(err => {
-         alert(err)
-      })
-   }
+   // getCategoryQuizzes() {
+   //    return fetch(this.categoryUrl).then(resp => {
+   //       return resp.json()
+   //    }).then(data => {
+   //       console.log(data)
+   //       return data
+   //    }).then
+   //    .catch(err => {
+   //       alert(err)
+   //    })
+   // }
 
    getQuizzes() {
       return fetch(this.baseUrl).then(response => {

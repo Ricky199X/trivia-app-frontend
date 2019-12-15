@@ -4,6 +4,7 @@ class Categories {
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
+      this.fetchAndLoadCategoryQuizzes()
       this.selectCategory()
    }
 
@@ -31,8 +32,12 @@ class Categories {
    }
 
    fetchAndLoadCategoryQuizzes() {
-      // this.adapter
-      // .
+      this.adapter
+      .getCategories()
+      .then(function(categoryJSON) {
+         const categoryInfo = categoryJSON.data
+         console.log(categoryInfo)
+      })
    }
 
 
