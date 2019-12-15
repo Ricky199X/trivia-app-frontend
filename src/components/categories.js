@@ -4,6 +4,7 @@ class Categories {
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
+      // this.addEventListenersToCategories()
    }
 
    initBindingAndEventListeners() {
@@ -54,10 +55,11 @@ class Categories {
 
    // idea is to add click event to each category li
    addEventListenersToCategories() {
-      let categories = document.querySelector('li')
 
-      for(let i = 0; i< categories.length; i++) {
+      const categoryLiList = document.querySelectorAll('li')
 
+      for(let i = 0; i < categoryLiList.length; i++) {
+         console.log(categoryLiList[i].innerHTML)
       }
    }
 
