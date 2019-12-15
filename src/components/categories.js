@@ -4,11 +4,12 @@ class Categories {
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
-      // this.addEventListenersToCategories()
+      this.addEventListenersToCategories()
    }
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
+      this.categoryLiList = document.querySelectorAll('li')
    }
    
    fetchAndLoadCategories() {
@@ -28,6 +29,7 @@ class Categories {
       }) 
       .then(() => {
          this.renderCategories()
+         this.addEventListenersToCategories()
       })
    }
    renderCategories() {
@@ -50,6 +52,7 @@ class Categories {
       this.main.appendChild(categoryDiv)
    }
 
+ 
    // at this point, when you click a category name, I want something to happen 
    // ideal outcome: click the category name -> then render the quizzes of that specific category 
 
