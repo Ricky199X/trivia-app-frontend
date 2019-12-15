@@ -8,4 +8,9 @@ class Category {
    renderCategoryLi() {
       return `<li>${this.name}</li>`
    }
+
+   renderCategoryQuizzes(categoryName) {
+      
+
+   }
 }

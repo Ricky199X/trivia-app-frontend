@@ -4,7 +4,7 @@ class Categories {
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
-      this.addEventListenersToCategories()
+      this.selectCategory()
    }
 
    initBindingAndEventListeners() {
@@ -29,7 +29,7 @@ class Categories {
       }) 
       .then(() => {
          this.renderCategories()
-         this.addEventListenersToCategories()
+         this.selectCategory()
       })
    }
    renderCategories() {
@@ -57,17 +57,19 @@ class Categories {
    // ideal outcome: click the category name -> then render the quizzes of that specific category 
 
    // idea is to add click event to each category li
-   addEventListenersToCategories() {
+   selectCategory() {
       const categoryLiList = document.querySelectorAll('li')
 
       for(let i = 0; i < categoryLiList.length; i++) {
          let element = categoryLiList[i]
          // want to add clickable event to each element of the category node list 
-         console.log(element.innerHTML)
          element.addEventListener('click', function(event) {
-            alert(`You clicked ${event.currentTarget.innerHTML} - nice job!`)
-            // now at this point, we want to call a function that will find the quizzes associated with that category 
-            // renderQuizzes()
+            // alert(`You clicked ${event.currentTarget.innerHTML} - nice job!`)
+
+            // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
+            // need to construct renderCategoryQuizzes function within the category class
+            let categoryName = event.currentTarget.innerHTML
+            console.log(categoryName)
          })
       }
    }
