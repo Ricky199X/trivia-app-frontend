@@ -65,7 +65,9 @@ class Categories {
          // want to add clickable event to each element of the category node list 
          console.log(element.innerHTML)
          element.addEventListener('click', function(event) {
-            alert('You clicked a category - nice job!')
+            alert(`You clicked ${event.currentTarget.innerHTML} - nice job!`)
+            // now at this point, we want to call a function that will find the quizzes associated with that category 
+            // renderQuizzes()
          })
       }
    }
