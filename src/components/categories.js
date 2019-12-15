@@ -49,4 +49,17 @@ class Categories {
       this.main.appendChild(categoryDiv)
    }
 
+   // at this point, when you click a category name, I want something to happen 
+   // ideal outcome: click the category name -> then render the quizzes of that specific category 
+
+   // idea is to add click event to each category li
+   addEventListenersToCategories() {
+      let categories = document.querySelector('li')
+
+      for(let i = 0; i< categories.length; i++) {
+
+      }
+   }
+
+
 }

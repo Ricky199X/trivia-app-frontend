@@ -8,7 +8,7 @@ class Quizzes {
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
-      // this.quizMenu = document.getElementById('quiz-container')
+      this.quizMenu = document.getElementById('quiz-container')
    }
 
    fetchAndLoadQuizzes() {
@@ -27,14 +27,14 @@ class Quizzes {
                return new Quiz(quizObj)
             })
          })
-      .then(() => {
-         this.render()
-         // this.renderQuizQuestions()
-      })
+      // .then(() => {
+      //    // this.renderQuiz()
+      //    // this.renderQuizQuestions()
+      // })
    }
 
    // render quizzes to the DOM - call after we get all the quizzes
-   render() {
+   renderQuiz() {
       // create the trivia container - div
 
       const quizDiv = document.createElement('div')
@@ -56,7 +56,7 @@ class Quizzes {
       console.log(this.quizzes)
    }
 
-   
+
 
    renderQuizQuestions() {
       // create the question container - div
