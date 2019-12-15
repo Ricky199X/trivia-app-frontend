@@ -9,7 +9,7 @@ class Categories {
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
-      this.categoryLiList = document.querySelectorAll('li')
+      // this.categoryLiList = document.querySelectorAll('li')
    }
    
    fetchAndLoadCategories() {
@@ -58,11 +58,15 @@ class Categories {
 
    // idea is to add click event to each category li
    addEventListenersToCategories() {
-
       const categoryLiList = document.querySelectorAll('li')
 
       for(let i = 0; i < categoryLiList.length; i++) {
-         console.log(categoryLiList[i].innerHTML)
+         let element = categoryLiList[i]
+         // want to add clickable event to each element of the category node list 
+         console.log(element.innerHTML)
+         element.addEventListener('click', function(event) {
+            alert('You clicked a category - nice job!')
+         })
       }
    }
 
