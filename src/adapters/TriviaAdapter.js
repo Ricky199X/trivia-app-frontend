@@ -4,10 +4,11 @@ class TriviaAdapter {
       this.categoryUrl = "http://localhost:3000/categories"
       this.sportCategoryURL = "http://localhost:3000/categories/1/quizzes"
       this.musicCategoryURL = "http://localhost:3000/categories/2/quizzes"
+      this.geographyCategoryURL = "http://localhost:3000/categories/3/quizzes"
 
    }
 
-   // function to get categories
+   // function to get category names
    getCategories() {
       return fetch(this.categoryUrl).then(resp => {
          return resp.json()
@@ -19,7 +20,19 @@ class TriviaAdapter {
       })
    }
 
-   getSportsCategoryQuizzes() {
+   // function to get music category quizzes
+   getMusicCategoryQuizzes() {
+      return fetch(this.musicCategoryURL).then(resp => {
+         return resp.json()
+      }).then(data => {
+         return data
+      }).catch(err => {
+         alert(err)
+      })
+   }
+
+   // function to get geography category quizzes
+   getGeographyCategoryQuizzes() {
       return fetch(this.sportCategoryURL).then(resp => {
          return resp.json()
       }).then(data => {
