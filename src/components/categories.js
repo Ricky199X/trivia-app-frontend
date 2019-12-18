@@ -1,6 +1,7 @@
 class Categories {
    constructor() {
       this.categories = []
+      this.categoryQuizzes = []
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
@@ -27,27 +28,12 @@ class Categories {
       .then(() => {
          this.renderCategories()
          this.selectCategory()
-         // this.renderCategoryQuizzes()
       })
    }
 
-   fetchQuizzesByCategoryName(categoryName) {
+   fetchQuizzesByCategoryName() {
       this.adapter
-      .getCategories()
-      .then(function(categoryJSON) {
-         const categoryInfo = categoryJSON.data
-         console.log(categoryInfo)
-         return categoryInfo
-      }).then(categoryObj => {
-         categoryObj.filter(function(cat) {
-            console.log(cat.attributes.name)
-            // if statement to check if the cat === what's passed as category name 
-            if (cat.attributes.name === categoryName) {
-               // we then make decision to render that category's quizzes
-               categoryName.renderQuiz()
-            }
-         })
-      })
+      .getSportsCategoryQuizzes()
    }
 
 
@@ -82,6 +68,7 @@ class Categories {
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
             let categoryName = event.currentTarget.innerHTML
+            console.log(categoryName)
             return categoryName
          })
       }

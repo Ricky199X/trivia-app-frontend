@@ -2,6 +2,9 @@ class TriviaAdapter {
    constructor() {
       this.baseUrl = "http://localhost:3000/quizzes"
       this.categoryUrl = "http://localhost:3000/categories"
+      this.sportCategoryURL = "http://localhost:3000/categories/1/quizzes"
+      this.musicCategoryURL = "http://localhost:3000/categories/2/quizzes"
+
    }
 
    // function to get categories
@@ -16,17 +19,15 @@ class TriviaAdapter {
       })
    }
 
-   // getCategoryQuizzes() {
-   //    return fetch(this.categoryUrl).then(resp => {
-   //       return resp.json()
-   //    }).then(data => {
-   //       console.log(data)
-   //       return data
-   //    }).then
-   //    .catch(err => {
-   //       alert(err)
-   //    })
-   // }
+   getSportsCategoryQuizzes() {
+      return fetch(this.sportCategoryURL).then(resp => {
+         return resp.json()
+      }).then(data => {
+         return data
+      }).catch(err => {
+         alert(err)
+      })
+   }
 
    getQuizzes() {
       return fetch(this.baseUrl).then(response => {
