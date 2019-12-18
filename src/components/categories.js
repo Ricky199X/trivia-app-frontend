@@ -2,6 +2,7 @@ class Categories {
    constructor() {
       this.categories = []
       this.categoryQuizzes = []
+      this.sportsQuizzes = []
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
@@ -34,6 +35,16 @@ class Categories {
    fetchQuizzesByCategoryName() {
       this.adapter
       .getSportsCategoryQuizzes()
+      .then(function(categoryQuizJSON) {
+         const sportsCatQuizzes = categoryQuizJSON.data
+         console.log(sportsCatQuizzes)
+         return sportsCatQuizzes
+      }).then(sportsCatQuizzes => {
+         this.sportsQuizzes = sportsCatQuizzes.map(function(sportsObj) {
+            return sportsObj.attributes.title
+         })
+         console.log(this.sportsQuizzes)
+      })
    }
 
 
