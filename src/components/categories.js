@@ -6,7 +6,8 @@ class Categories {
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
-      this.fetchSportsQuizzesByCategoryName()
+      this.fetchSportsQuizzes()
+      this.fetchGeographyQuizzes()
       this.selectCategory()
    }
 
@@ -32,7 +33,8 @@ class Categories {
       })
    }
 
-   fetchSportsQuizzesByCategoryName() {
+   // fetch sporrts quizzes
+   fetchSportsQuizzes() {
       this.adapter
       .getSportsCategoryQuizzes()
       .then(function(categoryQuizJSON) {
@@ -44,6 +46,22 @@ class Categories {
             return sportsObj.attributes.title
          })
          console.log(this.sportsQuizzes)
+      })
+   }
+
+   // fetch geography quizzes
+   fetchGeographyQuizzes() {
+      this.adapter
+      .getGeographyCategoryQuizzes()
+      .then(function(categoryQuizJSON) {
+         const geographyCatQuizzes = categoryQuizJSON.data
+         // console.log(sportsCatQuizzes)
+         return geographyCatQuizzes
+      }).then(geographyCatQuizzes => {
+         this.geographyQuizzes = geographyCatQuizzes.map(function(geographyObj) {
+            return geographyObj.attributes.title
+         })
+         console.log(this.geographyQuizzes)
       })
    }
 
