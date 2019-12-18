@@ -8,6 +8,7 @@ class Categories {
       this.fetchAndLoadCategories()
       this.fetchSportsQuizzes()
       this.fetchGeographyQuizzes()
+      this.fetchMusicQuizzes()
       this.selectCategory()
    }
 
@@ -36,7 +37,7 @@ class Categories {
    // fetch music quizzes
    fetchMusicQuizzes() {
       this.adapter
-      .musicCategoryQuizzes()
+      .getMusicCategoryQuizzes()
       .then(function(categoryQuizJSON) {
          const musicCatQuizzes = categoryQuizJSON.data
          // console.log(sportsCatQuizzes)

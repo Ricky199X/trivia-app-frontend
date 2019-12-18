@@ -45,7 +45,17 @@ class TriviaAdapter {
       })
    }
 
-   
+    // function to get geography category quizzes
+    getMusicCategoryQuizzes() {
+      return fetch(this.musicCategoryURL).then(resp => {
+         return resp.json()
+      }).then(data => {
+         return data
+      }).catch(err => {
+         alert(err)
+      })
+   }
+
 
    getQuizzes() {
       return fetch(this.baseUrl).then(response => {
