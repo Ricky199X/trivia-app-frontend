@@ -33,6 +33,22 @@ class Categories {
       })
    }
 
+   // fetch music quizzes
+   fetchMusicQuizzes() {
+      this.adapter
+      .musicCategoryQuizzes()
+      .then(function(categoryQuizJSON) {
+         const musicCatQuizzes = categoryQuizJSON.data
+         // console.log(sportsCatQuizzes)
+         return musicCatQuizzes
+      }).then(musicCatQuizzes => {
+         this.musicQuizzes = musicCatQuizzes.map(function(musicObj) {
+            return musicObj.attributes.title
+         })
+         console.log(this.musicQuizzes)
+      })
+   }
+
    // fetch sporrts quizzes
    fetchSportsQuizzes() {
       this.adapter

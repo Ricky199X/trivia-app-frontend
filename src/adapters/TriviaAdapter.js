@@ -45,6 +45,8 @@ class TriviaAdapter {
       })
    }
 
+   
+
    getQuizzes() {
       return fetch(this.baseUrl).then(response => {
          // console.log(response);
