@@ -40,13 +40,12 @@ class Categories {
       .getMusicCategoryQuizzes()
       .then(function(categoryQuizJSON) {
          const musicCatQuizzes = categoryQuizJSON.data
-         // console.log(sportsCatQuizzes)
          return musicCatQuizzes
       }).then(musicCatQuizzes => {
          this.musicQuizzes = musicCatQuizzes.map(function(musicObj) {
-            return musicObj.attributes.title
+            return musicObj.attributes
          })
-         console.log(this.musicQuizzes)
+         return this.musicQuizzes
       })
    }
 
@@ -56,13 +55,12 @@ class Categories {
       .getSportsCategoryQuizzes()
       .then(function(categoryQuizJSON) {
          const sportsCatQuizzes = categoryQuizJSON.data
-         // console.log(sportsCatQuizzes)
          return sportsCatQuizzes
       }).then(sportsCatQuizzes => {
          this.sportsQuizzes = sportsCatQuizzes.map(function(sportsObj) {
-            return sportsObj.attributes.title
+            return sportsObj.attributes
          })
-         console.log(this.sportsQuizzes)
+         return this.sportsQuizzes
       })
    }
 
@@ -72,13 +70,12 @@ class Categories {
       .getGeographyCategoryQuizzes()
       .then(function(categoryQuizJSON) {
          const geographyCatQuizzes = categoryQuizJSON.data
-         // console.log(sportsCatQuizzes)
          return geographyCatQuizzes
       }).then(geographyCatQuizzes => {
          this.geographyQuizzes = geographyCatQuizzes.map(function(geographyObj) {
-            return geographyObj.attributes.title
+            return geographyObj.attributes
          })
-         console.log(this.geographyQuizzes)
+         return this.geographyQuizzes
       })
    }
 
