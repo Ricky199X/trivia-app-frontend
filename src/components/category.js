@@ -6,7 +6,7 @@ class Category {
    }
 
    renderCategoryLi() {
-      return `<li>${this.name}</li>`
+      return `<li data-id="${this.id}">${this.name}</li>`
    }
 
    renderCategoryQuizzes() {

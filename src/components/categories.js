@@ -37,7 +37,7 @@ class Categories {
       .getSportsCategoryQuizzes()
       .then(function(categoryQuizJSON) {
          const sportsCatQuizzes = categoryQuizJSON.data
-         console.log(sportsCatQuizzes)
+         // console.log(sportsCatQuizzes)
          return sportsCatQuizzes
       }).then(sportsCatQuizzes => {
          this.sportsQuizzes = sportsCatQuizzes.map(function(sportsObj) {
@@ -78,12 +78,12 @@ class Categories {
             // alert(`You clicked ${event.currentTarget.innerHTML} - nice job!`)
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
-            let categoryName = event.currentTarget.innerHTML
-            console.log(categoryName)
-            return categoryName
+            let categoryId = event.target.dataset.id
+            console.log(categoryId)
+            // pass category name into another function which will then take that id and fetch the correct catrorys' id pased on that id passed
+            fetchQuizzesByCategoryId(categoryId)
          })
       }
-      // fetchQuizzesByCategoryName(categoryName)
    }
 
 

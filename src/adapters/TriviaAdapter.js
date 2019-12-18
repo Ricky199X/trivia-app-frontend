@@ -8,6 +8,9 @@ class TriviaAdapter {
 
    }
 
+   // need to set data-id on the thign I'm clicking
+   // quiz url by category -> accepts the id 
+
    // function to get category names
    getCategories() {
       return fetch(this.categoryUrl).then(resp => {
@@ -20,9 +23,9 @@ class TriviaAdapter {
       })
    }
 
-   // function to get music category quizzes
-   getMusicCategoryQuizzes() {
-      return fetch(this.musicCategoryURL).then(resp => {
+   // function to get sports category quizzes
+   getSportsCategoryQuizzes() {
+      return fetch(this.sportCategoryURL).then(resp => {
          return resp.json()
       }).then(data => {
          return data
@@ -33,7 +36,7 @@ class TriviaAdapter {
 
    // function to get geography category quizzes
    getGeographyCategoryQuizzes() {
-      return fetch(this.sportCategoryURL).then(resp => {
+      return fetch(this.geographyCategoryURL).then(resp => {
          return resp.json()
       }).then(data => {
          return data
