@@ -69,5 +69,52 @@ class TriviaAdapter {
         alert(err);
        })
    }
+
+    // fetch music quizzes
+    fetchMusicQuizzes() {
+      this.adapter
+      .getMusicCategoryQuizzes()
+      .then(function(categoryQuizJSON) {
+         const musicCatQuizzes = categoryQuizJSON.data
+         return musicCatQuizzes
+      }).then(musicCatQuizzes => {
+         this.musicQuizzes = musicCatQuizzes.map(function(musicObj) {
+            return musicObj.attributes
+         })
+         return this.musicQuizzes
+      })
+   }
+
+   // fetch sporrts quizzes
+   fetchSportsQuizzes() {
+      this.adapter
+      .getSportsCategoryQuizzes()
+      .then(function(categoryQuizJSON) {
+         const sportsCatQuizzes = categoryQuizJSON.data
+         return sportsCatQuizzes
+      }).then(sportsCatQuizzes => {
+         this.sportsQuizzes = sportsCatQuizzes.map(function(sportsObj) {
+            return sportsObj.attributes
+         })
+         return this.sportsQuizzes
+      })
+   }
+
+   // fetch geography quizzes
+   fetchGeographyQuizzes() {
+      this.adapter
+      .getGeographyCategoryQuizzes()
+      .then(function(categoryQuizJSON) {
+         const geographyCatQuizzes = categoryQuizJSON.data
+         return geographyCatQuizzes
+      }).then(geographyCatQuizzes => {
+         this.geographyQuizzes = geographyCatQuizzes.map(function(geographyObj) {
+            return geographyObj.attributes
+         })
+         console.log(this.geographyQuizzes)
+         return this.geographyQuizzes
+      })
+   }
+
 }
 

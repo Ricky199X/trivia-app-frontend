@@ -6,9 +6,9 @@ class Categories {
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
-      this.fetchSportsQuizzes()
-      this.fetchGeographyQuizzes()
-      this.fetchMusicQuizzes()
+      // this.fetchSportsQuizzes()
+      // this.fetchGeographyQuizzes()
+      // this.fetchMusicQuizzes()
       this.selectCategory()
    }
 
@@ -31,52 +31,16 @@ class Categories {
       .then(() => {
          this.renderCategories()
          this.selectCategory()
+         this.renderCategoryQuizzes()
       })
    }
 
-   // fetch music quizzes
-   fetchMusicQuizzes() {
-      this.adapter
-      .getMusicCategoryQuizzes()
-      .then(function(categoryQuizJSON) {
-         const musicCatQuizzes = categoryQuizJSON.data
-         return musicCatQuizzes
-      }).then(musicCatQuizzes => {
-         this.musicQuizzes = musicCatQuizzes.map(function(musicObj) {
-            return musicObj.attributes
-         })
-         return this.musicQuizzes
-      })
-   }
+   // need to write function that fetches the appropriate category's quizzes
 
-   // fetch sporrts quizzes
-   fetchSportsQuizzes() {
-      this.adapter
-      .getSportsCategoryQuizzes()
-      .then(function(categoryQuizJSON) {
-         const sportsCatQuizzes = categoryQuizJSON.data
-         return sportsCatQuizzes
-      }).then(sportsCatQuizzes => {
-         this.sportsQuizzes = sportsCatQuizzes.map(function(sportsObj) {
-            return sportsObj.attributes
-         })
-         return this.sportsQuizzes
-      })
-   }
+   renderCategoryQuizzes(categoryId) {
+      // this.adapter
 
-   // fetch geography quizzes
-   fetchGeographyQuizzes() {
-      this.adapter
-      .getGeographyCategoryQuizzes()
-      .then(function(categoryQuizJSON) {
-         const geographyCatQuizzes = categoryQuizJSON.data
-         return geographyCatQuizzes
-      }).then(geographyCatQuizzes => {
-         this.geographyQuizzes = geographyCatQuizzes.map(function(geographyObj) {
-            return geographyObj.attributes
-         })
-         return this.geographyQuizzes
-      })
+      console.log("hello!")
    }
 
 
@@ -110,10 +74,9 @@ class Categories {
             // alert(`You clicked ${event.currentTarget.innerHTML} - nice job!`)
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
-            let categoryId = event.target.dataset.id
+            const categoryId = event.target.dataset.id
             console.log(categoryId)
-            // pass category name into another function which will then take that id and fetch the correct catrorys' id pased on that id passed
-            fetchQuizzesByCategoryId(categoryId)
+            renderCategoryQuizzes()
          })
       }
    }
