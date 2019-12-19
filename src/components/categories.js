@@ -2,10 +2,10 @@ class Categories {
    constructor() {
       this.categories = []
       this.categoryQuizzes = []
-      this.sportsQuizzes = []
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
+      this.buildCategoryQuizzes()
       // this.fetchSportsQuizzes()
       // this.fetchGeographyQuizzes()
       // this.fetchMusicQuizzes()
@@ -30,17 +30,26 @@ class Categories {
       }) 
       .then(() => {
          this.renderCategories()
+         this.buildCategoryQuizzes()
          this.selectCategory()
-         this.renderCategoryQuizzes()
       })
    }
 
    // need to write function that fetches the appropriate category's quizzes
 
-   renderCategoryQuizzes(categoryId) {
-      // this.adapter
-
-      console.log("hello!")
+   async buildCategoryQuizzes(id) {
+      // takes the id based on that id, itll render something
+      switch (id) {
+         case id === 1:
+           console.log('This is sports');
+           break;
+         case id === 2:
+           console.log('This is music');
+           break;
+         case id === 3:
+           console.log('Bananas are $0.48 a pound.');
+           break;
+      }
    }
 
 
@@ -71,12 +80,13 @@ class Categories {
          let element = categoryLiList[i]
          // want to add clickable event to each element of the category node list 
          element.addEventListener('click', function(event) {
-            // alert(`You clicked ${event.currentTarget.innerHTML} - nice job!`)
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
             const categoryId = event.target.dataset.id
+            // this.TriviaAdapter.id = categoryId
             console.log(categoryId)
-            renderCategoryQuizzes()
+            this.buildCategoryQuizzes(categoryId)
+            
          })
       }
    }
