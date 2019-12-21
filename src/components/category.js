@@ -1,3 +1,5 @@
+// this class is not in charge of managing a portion of the page, it's in charge of managing an object.
+
 class Category {
    constructor(categoryJSON) {
       this.id = categoryJSON.id
@@ -12,6 +14,12 @@ class Category {
    renderCategoryQuizzes() {
       return `<li>${categoryName.quizzes}</li>`
    }
+
+   // static async retrieveAll() {
+   //    try {
+   //       const json = await TriviaAdapter.instance.getCategories()
+   //    }
+   // }
 }
 
 // page manag

@@ -8,11 +8,7 @@ class TriviaAdapter {
 
    }
 
-   // need to set data-id on the thign I'm clicking
-   // quiz url by category -> accepts the id 
-   quizzesByCategoryUrl(id) {
-      return `http://localhost:3000/categories/${id}/quizzes`
-   }
+  
   
 
    // function to get category names
@@ -60,17 +56,7 @@ class TriviaAdapter {
    //    })
    // }
 
-   // get quizzes by category by number - needs to be passed in an id
-   getQuizzesByCategory(id) {
-      console.log('hello!')
-      // fetch(this.quizzesByCategoryUrl(id)).then(resp => {
-      //    console.log(resp.json())
-      // })
-      // fetch the quiz objects
-      // use that info to populate this.quizzes in quizzes.js
-      // map this.quizzes to DOM elements - just like with the categories
-      // render those inside of this.quizzesDiv - before you render type "this.quizzesDiv.innerHTML = " " "
-   }
+  
 
 
 
@@ -128,7 +114,7 @@ class TriviaAdapter {
          this.geographyQuizzes = geographyCatQuizzes.map(function(geographyObj) {
             return geographyObj.attributes
          })
-         console.log(this.geographyQuizzes)
+         // console.log(this.geographyQuizzes)
          return this.geographyQuizzes
       })
    }
