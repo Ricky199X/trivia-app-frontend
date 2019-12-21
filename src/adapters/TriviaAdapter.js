@@ -8,9 +8,6 @@ class TriviaAdapter {
 
    }
 
-  
-  
-
    // function to get category names
    getCategories() {
       return fetch(this.categoryUrl).then(resp => {

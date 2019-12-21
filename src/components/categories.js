@@ -42,12 +42,6 @@ class Categories {
       })
    }
 
-
-   // async fetchAndLoadCategories() {
-   //    this.categories = await Category.retrieveAll()
-   //    this.renderCategories()
-   // }
-
    buildCategoryQuizzes(id) {
       // takes the id based on that id, itll render something
       // const num = parseInt(id)
@@ -81,6 +75,7 @@ class Categories {
          let element = categoryLiList[i]
          // want to add clickable event to each element of the category node list 
          element.addEventListener('click', (event) => {
+            event.preventDefault()
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
             const categoryId = event.target.dataset.id
@@ -101,7 +96,14 @@ class Categories {
     getQuizzesByCategory(id) {
       console.log('hello!')
       fetch(this.quizzesByCategoryUrl(id)).then(resp => {
-         console.log(resp.json())
+         return resp.json()
+      }).then(categoryQuizData => {
+         // Work with JSON data here
+         console.log(categoryQuizData)
+         return categoryQuizData
+      }).catch(err => {
+         // Do something for an error here
+        alert(err);
       })
       // fetch the quiz objects
       // use that info to populate this.quizzes in quizzes.js
