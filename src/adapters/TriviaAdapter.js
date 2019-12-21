@@ -19,6 +19,7 @@ class TriviaAdapter {
          alert(err)
       })
    }
+   
 
    // // function to get sports category quizzes
    // getSportsCategoryQuizzes() {

@@ -3,7 +3,7 @@
 class Categories {
    constructor() {
       this.categories = []
-      this.categoryQuizzes = []
+      this.selectedCategoryQuizzes = []
       this.adapter = new TriviaAdapter()
       // gets all the components that that portion of the screen needs to work + adds event listeners
       this.initBindingAndEventListeners()
@@ -40,6 +40,12 @@ class Categories {
          this.selectCategory()
          this.buildCategoryQuizzes()
       })
+   }
+
+    // need to set data-id on the thign I'm clicking
+    // quiz url by category -> accepts the id 
+   quizzesByCategoryUrl(id) {
+      return `http://localhost:3000/categories/${id}/quizzes`
    }
 
    buildCategoryQuizzes(id) {
@@ -86,22 +92,25 @@ class Categories {
       }
    }
 
-    // need to set data-id on the thign I'm clicking
-   // quiz url by category -> accepts the id 
-   quizzesByCategoryUrl(id) {
-      return `http://localhost:3000/categories/${id}/quizzes`
-   }
+   
 
     // get quizzes by category by number - needs to be passed in an id
     getQuizzesByCategory(id) {
-      console.log('hello!')
       fetch(this.quizzesByCategoryUrl(id)).then(resp => {
          return resp.json()
       }).then(categoryQuizData => {
-         // Work with JSON data here
-         console.log(categoryQuizData)
-         return categoryQuizData
-      }).catch(err => {
+         const data = categoryQuizData.data
+         return data
+      }).then(data => {
+         this.selectedCategoryQuizzes = data.map(function(quizObj) {
+            return quizObj.attributes
+         })
+         console.log(this.selectedCategoryQuizzes)
+         return this.selectedCategoryQuizzes
+      })
+
+
+      .catch(err => {
          // Do something for an error here
         alert(err);
       })
