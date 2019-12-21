@@ -39,6 +39,7 @@ class Categories {
          this.renderCategories()
          this.selectCategory()
          this.buildCategoryQuizzes()
+         this.getQuizzesByCategoryId(id)
       })
    }
 
@@ -103,14 +104,11 @@ class Categories {
          return data
       }).then(data => {
          this.selectedCategoryQuizzes = data.map(function(quizObj) {
-            return quizObj.attributes
+            return quizObj
          })
          console.log(this.selectedCategoryQuizzes)
          return this.selectedCategoryQuizzes
-      })
-
-
-      .catch(err => {
+      }).catch(err => {
          // Do something for an error here
         alert(err);
       })
@@ -118,6 +116,28 @@ class Categories {
       // use that info to populate this.quizzes in quizzes.js
       // map this.quizzes to DOM elements - just like with the categories
       // render those inside of this.quizzesDiv - before you render type "this.quizzesDiv.innerHTML = " " "
+   }
+
+   // now render category quizzes to the dom
+   renderSelectedCategoryQuizzes() {
+      // create the trivia container - div
+      const quizDiv = document.createElement('div')
+      quizDiv.id = 'quiz-div'
+
+      // creates a list for the quiz names
+      const quizMenu = document.createElement('ul')
+      quizMenu.id = 'quiz-menu'
+
+      // we'll want to append html to the div in order to add the quiz objects to the container
+      // we map through the quiz objects and sets the titles to li's.
+      // must be a string because we're trying to dynamically create HTML
+      quizMenu.innerHTML = this.quizzes.map(quiz => quiz.renderLi()).join('')
+
+      quizDiv.appendChild(quizMenu)
+
+      // append the quizMenu to the main
+      this.main.appendChild(quizDiv)
+      console.log(this.quizzes)
    }
 
 
