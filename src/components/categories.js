@@ -39,6 +39,7 @@ class Categories {
          this.renderCategories()
          this.selectCategory()
          this.buildCategoryQuizzes()
+         this.getQuizzesByCategory(id)
       })
    }
 
@@ -46,10 +47,9 @@ class Categories {
       // takes the id based on that id, itll render something
       // const num = parseInt(id)
       const selectedCategory = this.categories.find((category) => category.id === id)
-      
+      // return that selected category's id - we're going to fetch quizzes with it!
       console.log(selectedCategory.id)
-      // current bug: when i try to access the id (or anything) of selectedCategory, it's stating that we cant access properties of undefined
-
+      this.getQuizzesByCategory(selectedCategory.id)
    }
    
    renderCategories() { 
@@ -79,7 +79,7 @@ class Categories {
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
             const categoryId = event.target.dataset.id
-            console.log(categoryId)
+            // console.log(categoryId)
             this.buildCategoryQuizzes(categoryId)
             
          })

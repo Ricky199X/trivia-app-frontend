@@ -62,9 +62,10 @@ class TriviaAdapter {
 
    // get quizzes by category by number - needs to be passed in an id
    getQuizzesByCategory(id) {
-      fetch(this.quizzesByCategoryUrl(id)).then(resp => {
-         console.log(resp.json())
-      })
+      console.log('hello!')
+      // fetch(this.quizzesByCategoryUrl(id)).then(resp => {
+      //    console.log(resp.json())
+      // })
       // fetch the quiz objects
       // use that info to populate this.quizzes in quizzes.js
       // map this.quizzes to DOM elements - just like with the categories
