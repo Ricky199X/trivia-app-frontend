@@ -5,7 +5,7 @@ class Categories {
       this.categories = []
       this.categoryQuizzes = []
       this.adapter = new TriviaAdapter()
-
+      // gets all the components that that portion of the screen needs to work + adds event listeners
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
       this.buildCategoryQuizzes()
@@ -13,8 +13,7 @@ class Categories {
    }
 
    initBindingAndEventListeners() {
-      
-      this.main = document.querySelector('main')
+      this.main = document.querySelector('#category-selector')
       this.categoryDiv = document.createElement('div')
       this.categoryDiv.id = 'category-div'
       this.quizzesDiv = document.createElement('div')
