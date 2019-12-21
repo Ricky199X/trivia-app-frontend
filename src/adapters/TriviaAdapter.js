@@ -8,7 +8,7 @@ class TriviaAdapter {
 
    }
 
-    // need to set data-id on the thign I'm clicking
+   // need to set data-id on the thign I'm clicking
    // quiz url by category -> accepts the id 
    quizzesByCategoryUrl(id) {
       return `http://localhost:3000/categories/${id}/quizzes`
@@ -27,44 +27,46 @@ class TriviaAdapter {
       })
    }
 
-   // function to get sports category quizzes
-   getSportsCategoryQuizzes() {
-      return fetch(this.sportCategoryURL).then(resp => {
-         return resp.json()
-      }).then(data => {
-         return data
-      }).catch(err => {
-         alert(err)
-      })
-   }
+   // // function to get sports category quizzes
+   // getSportsCategoryQuizzes() {
+   //    return fetch(this.sportCategoryURL).then(resp => {
+   //       return resp.json()
+   //    }).then(data => {
+   //       return data
+   //    }).catch(err => {
+   //       alert(err)
+   //    })
+   // }
 
-   // function to get geography category quizzes
-   getGeographyCategoryQuizzes() {
-      return fetch(this.geographyCategoryURL).then(resp => {
-         return resp.json()
-      }).then(data => {
-         return data
-      }).catch(err => {
-         alert(err)
-      })
-   }
+   // // function to get geography category quizzes
+   // getGeographyCategoryQuizzes() {
+   //    return fetch(this.geographyCategoryURL).then(resp => {
+   //       return resp.json()
+   //    }).then(data => {
+   //       return data
+   //    }).catch(err => {
+   //       alert(err)
+   //    })
+   // }
 
-    // function to get geography category quizzes
-    getMusicCategoryQuizzes() {
-      return fetch(this.musicCategoryURL).then(resp => {
-         return resp.json()
-      }).then(data => {
-         return data
-      }).catch(err => {
-         alert(err)
-      })
-   }
+   //  // function to get geography category quizzes
+   //  getMusicCategoryQuizzes() {
+   //    return fetch(this.musicCategoryURL).then(resp => {
+   //       return resp.json()
+   //    }).then(data => {
+   //       return data
+   //    }).catch(err => {
+   //       alert(err)
+   //    })
+   // }
 
    // get quizzes by category by number - needs to be passed in an id
    getQuizzesByCategory(id) {
-      fetch(this.quizzesByCategoryUrl(id)).then()
+      fetch(this.quizzesByCategoryUrl(id)).then(resp => {
+         console.log(resp.json())
+      })
       // fetch the quiz objects
-      // use that info to populate this.quizzes in categories.js
+      // use that info to populate this.quizzes in quizzes.js
       // map this.quizzes to DOM elements - just like with the categories
       // render those inside of this.quizzesDiv - before you render type "this.quizzesDiv.innerHTML = " " "
    }

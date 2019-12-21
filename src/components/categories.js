@@ -9,9 +9,6 @@ class Categories {
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories()
       this.buildCategoryQuizzes()
-      // this.fetchSportsQuizzes()
-      // this.fetchGeographyQuizzes()
-      // this.fetchMusicQuizzes()
       this.selectCategory()
    }
 
@@ -40,25 +37,24 @@ class Categories {
       }) 
       .then(() => {
          this.renderCategories()
-         this.buildCategoryQuizzes()
          this.selectCategory()
+         this.buildCategoryQuizzes()
       })
    }
 
-   // need to write function that fetches the appropriate category's quizzes
-
-    buildCategoryQuizzes(id) {
+   buildCategoryQuizzes(id) {
       // takes the id based on that id, itll render something
       // const num = parseInt(id)
-      const selectedCategory = this.categories.find((c) => c.id === id)
-      console.log(selectedCategory)
+      const selectedCategory = this.categories.find((category) => category.id === id)
+      
+      console.log(selectedCategory.id)
+      // current bug: when i try to access the id (or anything) of selectedCategory, it's stating that we cant access properties of undefined
+
    }
-
-
    
-   renderCategories() { // strictly meant to render the names of the categories to the browser
+   renderCategories() { 
+      // strictly meant to render the names of the categories to the browser
       // creates a div for the category names
-     
       this.categoryDiv.innerText = "Please select a category below!"
       // creates a list for the category types
       const categoryMenu = document.createElement('ul')
@@ -83,7 +79,6 @@ class Categories {
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
             const categoryId = event.target.dataset.id
-            // this.TriviaAdapter.id = categoryId
             console.log(categoryId)
             this.buildCategoryQuizzes(categoryId)
             
