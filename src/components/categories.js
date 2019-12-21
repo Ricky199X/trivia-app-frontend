@@ -11,10 +11,11 @@ class Categories {
       this.buildCategoryQuizzes() 
       this.selectCategory()
       this.getQuizzesByCategoryId()
+      this.renderSelectedCategoryQuizzes()
    }
 
    initBindingAndEventListeners() {
-      this.main = document.querySelector('#category-selector')
+      this.main = document.querySelector('#app-container')
       this.categoryDiv = document.createElement('div')
       this.categoryDiv.id = 'category-div'
       this.quizzesDiv = document.createElement('div')
@@ -40,6 +41,7 @@ class Categories {
          this.selectCategory()
          this.buildCategoryQuizzes()
          this.getQuizzesByCategoryId(id)
+         this.renderSelectedCategoryQuizzes()
       })
    }
 
@@ -58,20 +60,7 @@ class Categories {
       this.getQuizzesByCategory(catId)
    }
    
-   renderCategories() { 
-      // strictly meant to render the names of the categories to the browser
-      // creates a div for the category names
-      this.categoryDiv.innerText = "Please select a category below!"
-      // creates a list for the category types
-      const categoryMenu = document.createElement('ul')
-      categoryMenu.id = 'category-menu'
-      // is SUPPOSED to map through the different category names and render to the category menu 
-      categoryMenu.innerHTML = this.categories.map(category => category.renderCategoryLi()).join('')
-      // appends the category menu to the category div
-      this.categoryDiv.appendChild(categoryMenu)
-      
-   }
-
+   
  
    // at this point, when you click a category name, I want something to happen 
    // ideal outcome: click the category name -> then render the quizzes of that specific category 
@@ -104,7 +93,7 @@ class Categories {
          return data
       }).then(data => {
          this.selectedCategoryQuizzes = data.map(function(quizObj) {
-            return quizObj
+            return new Quiz(quizObj)
          })
          console.log(this.selectedCategoryQuizzes)
          return this.selectedCategoryQuizzes
@@ -118,11 +107,27 @@ class Categories {
       // render those inside of this.quizzesDiv - before you render type "this.quizzesDiv.innerHTML = " " "
    }
 
+
+   renderCategories() { 
+      // strictly meant to render the names of the categories to the browser
+      // creates a div for the category names
+      this.categoryDiv.innerText = "Please select a category below!"
+      // creates a list for the category types
+      const categoryMenu = document.createElement('ul')
+      categoryMenu.id = 'category-menu'
+      // is SUPPOSED to map through the different category names and render to the category menu 
+      categoryMenu.innerHTML = this.categories.map(category => category.renderCategoryLi()).join('')
+      // appends the category menu to the category div
+      this.categoryDiv.appendChild(categoryMenu)
+   }
+
+
    // now render category quizzes to the dom
    renderSelectedCategoryQuizzes() {
-      // create the trivia container - div
-      const quizDiv = document.createElement('div')
-      quizDiv.id = 'quiz-div'
+      // // create the trivia container - div
+      // const quizzesDiv = document.createElement('div')
+      // quizDiv.id = 'quiz-div'
+      this.quizzesDiv.innerText = "Let's get some text on the screen!"
 
       // creates a list for the quiz names
       const quizMenu = document.createElement('ul')
@@ -131,13 +136,11 @@ class Categories {
       // we'll want to append html to the div in order to add the quiz objects to the container
       // we map through the quiz objects and sets the titles to li's.
       // must be a string because we're trying to dynamically create HTML
-      quizMenu.innerHTML = this.quizzes.map(quiz => quiz.renderLi()).join('')
+      quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderLi()).join('')
 
       quizDiv.appendChild(quizMenu)
-
       // append the quizMenu to the main
-      this.main.appendChild(quizDiv)
-      console.log(this.quizzes)
+      this.main.appendChild(quizzesDiv)
    }
 
 
