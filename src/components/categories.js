@@ -39,7 +39,6 @@ class Categories {
          this.selectCategory()
          this.buildCategoryQuizzes()
          this.getQuizzesByCategoryId(id)
-         this.renderSelectedCategoryQuizzes()
       })
    }
 
@@ -73,7 +72,6 @@ class Categories {
             const categoryId = event.target.dataset.id
             // console.log(categoryId)
             this.buildCategoryQuizzes(categoryId)
-            
          })
       }
    }

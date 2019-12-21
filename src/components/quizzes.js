@@ -3,14 +3,16 @@ class Quizzes {
       this.selectedQuizzes = []
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
-      // this.fetchAndLoadQuizzes()
+      this.fetchAndLoadQuizzes()
    }
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
-      this.quizMenu = document.getElementById('quiz-container')
       this.quizzesDiv = document.createElement('div')
       this.quizzesDiv.id = 'quizzes-div'
+      this.quizMenu = document.createElement('ul')
+      this.quizMenu.id = 'quiz-menu'
+      
    }
 
    fetchAndLoadQuizzes() {
@@ -64,17 +66,12 @@ class Quizzes {
       // const quizzesDiv = document.createElement('div')
       // quizDiv.id = 'quiz-div'
       this.quizzesDiv.innerText = "Let's get some text on the screen!"
-
-      // creates a list for the quiz names
-      const quizMenu = document.createElement('ul')
-      quizMenu.id = 'quiz-menu'
-
       // we'll want to append html to the div in order to add the quiz objects to the container
       // we map through the quiz objects and sets the titles to li's.
       // must be a string because we're trying to dynamically create HTML
-      quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderCategoryQuizzes()).join('')
+      this.quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderLi()).join('')
 
-      this.quizzesDiv.appendChild(quizMenu)
+      this.quizzesDiv.appendChild(this.quizMenu)
       // append the quizMenu to the main
       this.main.appendChild(this.quizzesDiv)
    }
