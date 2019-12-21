@@ -7,8 +7,8 @@ class Categories {
       this.adapter = new TriviaAdapter()
       // gets all the components that that portion of the screen needs to work + adds event listeners
       this.initBindingAndEventListeners()
-      this.fetchAndLoadCategories()
-      this.buildCategoryQuizzes()
+      this.fetchAndLoadCategories() // - calls to the backend, grabs categories from db, loads them to the page
+      this.buildCategoryQuizzes() 
       this.selectCategory()
    }
 
@@ -22,24 +22,30 @@ class Categories {
       this.main.appendChild(this.categoryDiv)
    }
    
-   fetchAndLoadCategories() {
-      this.adapter
-      .getCategories()
-      .then(function(categoryJSON) {
-         const categoryInfo = categoryJSON.data
-         return categoryInfo
-      })
-      .then(categoryInfo => {
-         this.categories = categoryInfo.map(function(categoryObject) {
-            return new Category(categoryObject)
-         })
-      }) 
-      .then(() => {
-         this.renderCategories()
-         this.selectCategory()
-         this.buildCategoryQuizzes()
-         this.getQuizzesByCategory(id)
-      })
+   // async fetchAndLoadCategories() {
+   //    this.adapter
+   //    .getCategories()
+   //    .then(function(categoryJSON) {
+   //       const categoryInfo = categoryJSON.data
+   //       return categoryInfo
+   //    })
+   //    .then(categoryInfo => {
+   //       this.categories = categoryInfo.map(function(categoryObject) {
+   //          return new Category(categoryObject)
+   //       })
+   //    }) 
+   //    .then(() => {
+   //       this.renderCategories()
+   //       this.selectCategory()
+   //       this.buildCategoryQuizzes()
+   //       this.getQuizzesByCategory(id)
+   //    })
+   // }
+
+
+   async fetchAndLoadCategories() {
+      this.categories = await Category.retrieveAll()
+      this.renderCategories()
    }
 
    buildCategoryQuizzes(id) {
