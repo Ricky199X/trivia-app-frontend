@@ -1,14 +1,16 @@
 class Quizzes {
    constructor() {
-      this.quizzes = []
+      this.selectedQuizzes = []
       this.adapter = new TriviaAdapter()
       this.initBindingAndEventListeners()
-      this.fetchAndLoadQuizzes()
+      // this.fetchAndLoadQuizzes()
    }
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('main')
       this.quizMenu = document.getElementById('quiz-container')
+      this.quizzesDiv = document.createElement('div')
+      this.quizzesDiv.id = 'quizzes-div'
    }
 
    fetchAndLoadQuizzes() {
@@ -27,18 +29,41 @@ class Quizzes {
                return new Quiz(quizObj)
             })
          })
-      // .then(() => {
-      //    // this.renderQuiz()
-      //    // this.renderQuizQuestions()
-      // })
+      .then(() => {
+         this.renderSelectedCategoryQuizzes()
+         // this.renderQuizQuestions()
+      })
    }
 
-   // render quizzes to the DOM - call after we get all the quizzes
-   renderQuiz() {
-      // create the trivia container - div
+   // // render quizzes to the DOM - call after we get all the quizzes
+   // renderQuiz() {
+   //    // create the trivia container - div
 
-      const quizDiv = document.createElement('div')
-      quizDiv.id = 'quiz-div'
+   //    const quizDiv = document.createElement('div')
+   //    quizDiv.id = 'quiz-div'
+
+   //    // creates a list for the quiz names
+   //    const quizMenu = document.createElement('ul')
+   //    quizMenu.id = 'quiz-menu'
+
+   //    // we'll want to append html to the div in order to add the quiz objects to the container
+   //    // we map through the quiz objects and sets the titles to li's.
+   //    // must be a string because we're trying to dynamically create HTML
+   //    quizMenu.innerHTML = this.quizzes.map(quiz => quiz.renderLi()).join('')
+
+   //    quizDiv.appendChild(quizMenu)
+
+   //    // append the quizMenu to the main
+   //    this.main.appendChild(quizDiv)
+   //    console.log(this.quizzes)
+   // }
+
+    // now render category quizzes to the dom
+    renderSelectedCategoryQuizzes() {
+      // // create the trivia container - div
+      // const quizzesDiv = document.createElement('div')
+      // quizDiv.id = 'quiz-div'
+      this.quizzesDiv.innerText = "Let's get some text on the screen!"
 
       // creates a list for the quiz names
       const quizMenu = document.createElement('ul')
@@ -47,15 +72,12 @@ class Quizzes {
       // we'll want to append html to the div in order to add the quiz objects to the container
       // we map through the quiz objects and sets the titles to li's.
       // must be a string because we're trying to dynamically create HTML
-      quizMenu.innerHTML = this.quizzes.map(quiz => quiz.renderLi()).join('')
+      quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderCategoryQuizzes()).join('')
 
-      quizDiv.appendChild(quizMenu)
-
+      this.quizzesDiv.appendChild(quizMenu)
       // append the quizMenu to the main
-      this.main.appendChild(quizDiv)
-      console.log(this.quizzes)
+      this.main.appendChild(this.quizzesDiv)
    }
-
 
 
    renderQuizQuestions() {

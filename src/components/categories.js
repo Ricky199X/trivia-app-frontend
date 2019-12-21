@@ -3,7 +3,6 @@
 class Categories {
    constructor() {
       this.categories = []
-      this.selectedCategoryQuizzes = []
       this.adapter = new TriviaAdapter()
       // gets all the components that that portion of the screen needs to work + adds event listeners
       this.initBindingAndEventListeners()
@@ -18,8 +17,7 @@ class Categories {
       this.main = document.querySelector('#app-container')
       this.categoryDiv = document.createElement('div')
       this.categoryDiv.id = 'category-div'
-      this.quizzesDiv = document.createElement('div')
-      this.quizzesDiv.id = 'quizzes-div'
+      
       // appends the div, to main 
       this.main.appendChild(this.categoryDiv)
    }
@@ -60,8 +58,6 @@ class Categories {
       this.getQuizzesByCategory(catId)
    }
    
-   
- 
    // at this point, when you click a category name, I want something to happen 
    // ideal outcome: click the category name -> then render the quizzes of that specific category 
    selectCategory() {
@@ -92,11 +88,12 @@ class Categories {
          const data = categoryQuizData.data
          return data
       }).then(data => {
-         this.selectedCategoryQuizzes = data.map(function(quizObj) {
+         this.selectedQuizzes = data.map(function(quizObj) {
             return new Quiz(quizObj)
          })
-         console.log(this.selectedCategoryQuizzes)
-         return this.selectedCategoryQuizzes
+         console.log(this.selectedQuizzes)
+         return this.selectedQuizzes
+         // return this.selectedCategoryQuizzes
       }).catch(err => {
          // Do something for an error here
         alert(err);
@@ -122,26 +119,26 @@ class Categories {
    }
 
 
-   // now render category quizzes to the dom
-   renderSelectedCategoryQuizzes() {
-      // // create the trivia container - div
-      // const quizzesDiv = document.createElement('div')
-      // quizDiv.id = 'quiz-div'
-      this.quizzesDiv.innerText = "Let's get some text on the screen!"
+   // // now render category quizzes to the dom
+   // renderSelectedCategoryQuizzes() {
+   //    // // create the trivia container - div
+   //    // const quizzesDiv = document.createElement('div')
+   //    // quizDiv.id = 'quiz-div'
+   //    this.quizzesDiv.innerText = "Let's get some text on the screen!"
 
-      // creates a list for the quiz names
-      const quizMenu = document.createElement('ul')
-      quizMenu.id = 'quiz-menu'
+   //    // creates a list for the quiz names
+   //    const quizMenu = document.createElement('ul')
+   //    quizMenu.id = 'quiz-menu'
 
-      // we'll want to append html to the div in order to add the quiz objects to the container
-      // we map through the quiz objects and sets the titles to li's.
-      // must be a string because we're trying to dynamically create HTML
-      quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderLi()).join('')
+   //    // we'll want to append html to the div in order to add the quiz objects to the container
+   //    // we map through the quiz objects and sets the titles to li's.
+   //    // must be a string because we're trying to dynamically create HTML
+   //    quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderCategoryQuizzes()).join('')
 
-      quizDiv.appendChild(quizMenu)
-      // append the quizMenu to the main
-      this.main.appendChild(quizzesDiv)
-   }
+   //    quizDiv.appendChild(quizMenu)
+   //    // append the quizMenu to the main
+   //    this.main.appendChild(quizzesDiv)
+   // }
 
 
 }

@@ -14,12 +14,6 @@ class Category {
    renderCategoryQuizzes() {
       return `<li>${categoryName.quizzes}</li>`
    }
-
-   // static async retrieveAll() {
-   //    try {
-   //       const json = await TriviaAdapter.instance.getCategories()
-   //    }
-   // }
 }
 
 // page manag
