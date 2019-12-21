@@ -13,3 +13,5 @@ class Category {
       return `<li>${categoryName.quizzes}</li>`
    }
 }
+
+// page manag
