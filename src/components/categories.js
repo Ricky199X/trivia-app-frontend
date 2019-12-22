@@ -43,7 +43,6 @@ class Categories {
 
    // get quizzes by category by number - needs to be passed in an id
    getQuizzesByCategory(id) {
-
       const selectedCategory = this.categories.find((category) => category.id === id)
       // return that selected category's id - we're going to fetch quizzes with it!
       const catId = selectedCategory.id
