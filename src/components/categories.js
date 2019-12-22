@@ -7,17 +7,12 @@ class Categories {
       // gets all the components that that portion of the screen needs to work + adds event listeners
       this.initBindingAndEventListeners()
       this.fetchAndLoadCategories() // - calls to the backend, grabs categories from db, loads them to the page
-      this.buildCategoryQuizzes() 
-      this.selectCategory()
-      this.getQuizzesByCategoryId()
-      this.renderSelectedCategoryQuizzes()
    }
 
    initBindingAndEventListeners() {
       this.main = document.querySelector('#app-container')
       this.categoryDiv = document.createElement('div')
       this.categoryDiv.id = 'category-div'
-      
       // appends the div, to main 
       this.main.appendChild(this.categoryDiv)
    }
@@ -37,8 +32,6 @@ class Categories {
       .then(() => {
          this.renderCategories()
          this.selectCategory()
-         this.buildCategoryQuizzes()
-         this.getQuizzesByCategoryId(id)
       })
    }
 
@@ -48,13 +41,27 @@ class Categories {
       return `http://localhost:3000/categories/${id}/quizzes`
    }
 
-   buildCategoryQuizzes(id) {
-      // takes the id based on that id, itll render something
-      // const num = parseInt(id)
+   // get quizzes by category by number - needs to be passed in an id
+   getQuizzesByCategory(id) {
+
       const selectedCategory = this.categories.find((category) => category.id === id)
       // return that selected category's id - we're going to fetch quizzes with it!
       const catId = selectedCategory.id
-      this.getQuizzesByCategory(catId)
+
+      fetch(this.quizzesByCategoryUrl(catId)).then(resp => {
+         return resp.json()
+      }).then(categoryQuizData => {
+         const data = categoryQuizData.data
+         return data
+      }).then(data => {
+         this.selectedQuizzes = data.map(function(quizObj) {
+            return new Quiz(quizObj)
+         })
+         console.log(this)
+         return this.selectedQuizzes
+      }).catch(err => {
+        alert(err);
+      })
    }
    
    // at this point, when you click a category name, I want something to happen 
@@ -70,36 +77,9 @@ class Categories {
             // now at this point, we want to call a function that will find the quizzes associated with that category that we clicked
             // need to construct renderCategoryQuizzes function within the category class
             const categoryId = event.target.dataset.id
-            // console.log(categoryId)
-            this.buildCategoryQuizzes(categoryId)
+            this.getQuizzesByCategory(categoryId)
          })
       }
-   }
-
-   
-
-    // get quizzes by category by number - needs to be passed in an id
-    getQuizzesByCategory(id) {
-      fetch(this.quizzesByCategoryUrl(id)).then(resp => {
-         return resp.json()
-      }).then(categoryQuizData => {
-         const data = categoryQuizData.data
-         return data
-      }).then(data => {
-         this.selectedQuizzes = data.map(function(quizObj) {
-            return new Quiz(quizObj)
-         })
-         console.log(this.selectedQuizzes)
-         return this.selectedQuizzes
-         // return this.selectedCategoryQuizzes
-      }).catch(err => {
-         // Do something for an error here
-        alert(err);
-      })
-      // fetch the quiz objects
-      // use that info to populate this.quizzes in quizzes.js
-      // map this.quizzes to DOM elements - just like with the categories
-      // render those inside of this.quizzesDiv - before you render type "this.quizzesDiv.innerHTML = " " "
    }
 
 
@@ -116,27 +96,6 @@ class Categories {
       this.categoryDiv.appendChild(categoryMenu)
    }
 
-
-   // // now render category quizzes to the dom
-   // renderSelectedCategoryQuizzes() {
-   //    // // create the trivia container - div
-   //    // const quizzesDiv = document.createElement('div')
-   //    // quizDiv.id = 'quiz-div'
-   //    this.quizzesDiv.innerText = "Let's get some text on the screen!"
-
-   //    // creates a list for the quiz names
-   //    const quizMenu = document.createElement('ul')
-   //    quizMenu.id = 'quiz-menu'
-
-   //    // we'll want to append html to the div in order to add the quiz objects to the container
-   //    // we map through the quiz objects and sets the titles to li's.
-   //    // must be a string because we're trying to dynamically create HTML
-   //    quizMenu.innerHTML = this.selectedQuizzes.map(quiz => quiz.renderCategoryQuizzes()).join('')
-
-   //    quizDiv.appendChild(quizMenu)
-   //    // append the quizMenu to the main
-   //    this.main.appendChild(quizzesDiv)
-   // }
 
 
 }

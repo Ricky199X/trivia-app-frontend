@@ -8,11 +8,6 @@ class TriviaAdapter {
 
    }
 
-     // need to set data-id on the thign I'm clicking
-    // quiz url by category -> accepts the id 
-    quizzesByCategoryUrl(id) {
-      return `http://localhost:3000/categories/${id}/quizzes`
-   }
 
    // function to get category names
    getCategories() {
